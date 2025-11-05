@@ -1,4 +1,4 @@
-# (Svendeprøve IT-supporter) 🚀
+# (Svendeprøve IT-supporter) 
 
 ![Project Status](https://img.shields.io/badge/status-Complete-success)
 ![Platform](https://img.shields.io/badge/platform-Physical%20Routers%20%26%20Switches-blue)
@@ -7,7 +7,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 ---
 
-## Overview 🌐
+## Overview 
 
 This project demonstrates the setup and configuration of a multi-site corporate network with VLANs, OSPF routing, NAT, and Active Directory on virtual servers. The goal is to simulate a realistic corporate environment where multiple departments are connected via WAN links, with users and servers organized by department and function.
 
@@ -15,9 +15,9 @@ This project demonstrates the setup and configuration of a multi-site corporate 
 
 ---
 
-## Network Design 🗺️
+## Network Design 
 
-### VLAN & IP Plan 💻
+### VLAN & IP Plan 
 
 | Site      | VLAN | Subnet        | Device/Role | IP Address | Notes                        |
 |----------|------|---------------|------------|-----------|-------------------------------|
@@ -31,21 +31,21 @@ This project demonstrates the setup and configuration of a multi-site corporate 
 | Svendborg| 99   | 10.30.99.0/24 | RT03       | 10.30.99.1 | Management subnet             |
 | WAN Links| -    | 172.16.x.0/30 | RT01 ↔ RT02/03 | see notes | Point-to-point site connections |
 
-### Devices & Roles ⚙️
+### Devices & Roles ️
 
 | Device  | Role                           | Notes                       |
 |---------|--------------------------------|-----------------------------|
-| RT01    | NAT, OSPF, Router-on-a-Stick   | Internet via WAN DHCP 🌐     |
-| RT02    | OSPF, default route to RT01    | No direct Internet 🚫        |
-| RT03    | OSPF, default route to RT01    | No direct Internet 🚫        |
-| SW01-03 | VLAN config, trunk to respective router | Physical switches per site 🖧 |
-| Proxmox | Hosts virtual DCs (DC01, DC02), AD, DNS, DHCP | Odense site 🖥️ |
+| RT01    | NAT, OSPF, Router-on-a-Stick   | Internet via WAN DHCP      |
+| RT02    | OSPF, default route to RT01    | No direct Internet         |
+| RT03    | OSPF, default route to RT01    | No direct Internet         |
+| SW01-03 | VLAN config, trunk to respective router | Physical switches per site  |
+| Proxmox | Hosts virtual DCs (DC01, DC02), AD, DNS, DHCP | Odense site  |
 
 ---
 
-## Testing & Verification ✅
+## Testing & Verification 
 
-### Switch & Router Commands 🖥️
+### Switch & Router Commands 
 
 ```bash
 # Switch
@@ -63,7 +63,7 @@ ping 8.8.8.8
 traceroute 8.8.8.8
 ```
 
-### SSH Access 🔐
+### SSH Access 
 
 ```bash
 ssh admin@<switch_IP>
@@ -71,7 +71,7 @@ show run | include username
 show ip ssh
 ```
 
-### WAN Connectivity 🌉
+### WAN Connectivity 
 
 ```bash
 ping <remote site IP>
@@ -80,9 +80,9 @@ show cdp neighbors
 
 ---
 
-## Domain Controllers Setup (PowerShell) 💾
+## Domain Controllers Setup (PowerShell) 
 
-### DC01 – Primary DC 🏢
+### DC01 – Primary DC 
 
 ```powershell
 # Static IP & DNS
@@ -105,7 +105,7 @@ $DSRMPassword = ConvertTo-SecureString "torbenDSRM!2025" -AsPlainText -Force
 Install-ADDSForest -DomainName $DomainName -SafeModeAdministratorPassword $DSRMPassword -InstallDNS -Force:$true
 ```
 
-### DC02 – Secondary DC / Failover 🏢
+### DC02 – Secondary DC / Failover 
 
 ```powershell
 # Static IP & DNS
@@ -119,7 +119,7 @@ Install-WindowsFeature -Name AD-Domain-Services, DNS, DHCP -IncludeManagementToo
 Install-ADDSDomainController -DomainName $DomainName -Credential (Get-Credential) -InstallDNS -ReplicationSourceDC DC01.torbenbyg.local -Force:$true
 ```
 
-**Verify replication & DHCP failover 🔄:**
+**Verify replication & DHCP failover:**
 
 ```powershell
 repadmin /replsummary
@@ -146,4 +146,4 @@ Get-DhcpServerv4Failover
 
 ---
 
-✅ Fully tested and ready for a multi-site corporate lab setup.
+Fully tested and ready for a multi-site corporate lab setup.
