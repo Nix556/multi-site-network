@@ -1,8 +1,3 @@
-<#
-.SYNOPSIS
-    Renames the server to DC01 and restarts.
-#>
-
 $NewName = "DC01"
 
 Write-Host "Changing server name to $NewName ..." -ForegroundColor Cyan
