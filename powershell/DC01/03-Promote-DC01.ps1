@@ -1,8 +1,3 @@
-<#
-.SYNOPSIS
-    Promotes DC01 to a new forest (Primary Domain Controller).
-#>
-
 $DomainName = "torbenbyg.local"
 $DSRMPassword = Read-Host "Enter DSRM password" -AsSecureString
 
