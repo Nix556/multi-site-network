@@ -129,7 +129,7 @@ Get-DhcpServerv4Failover
 
 ---
 
-## Usage Instructions 🛠️
+## Usage Instructions
 
 1. **Routers & Switches**: Configure physical routers (RT01, RT02, RT03) and switches (SW01, SW02, SW03) using the configs in `configs/routers/` and `configs/switches/`.
 2. **Domain Controllers**:
