@@ -3,6 +3,7 @@
 Multi-site netværkslab lavet til øvelse og svendeprøve som IT-supporter.
 
 Projektet inkluderer blandt andet:
+
 - VLAN segmentering
 - OSPF routing
 - NAT
@@ -12,6 +13,7 @@ Projektet inkluderer blandt andet:
 - Fysiske Cisco routers/switches
 
 Sites:
+
 - Odense
 - Nyborg
 - Svendborg
@@ -23,6 +25,7 @@ Sites:
 Setup'et simulerer et mindre firma med flere lokationer forbundet over WAN links.
 
 Odense fungerer som hovedsite med:
+
 - Internet adgang
 - Proxmox host
 - Domain Controllers
@@ -37,7 +40,7 @@ Nyborg og Svendborg er forbundet via OSPF og bruger RT01 som upstream router.
 ### VLANs
 
 | VLAN | Purpose | Subnet |
-|---|---|---|
+| --- | --- | --- |
 | 10 | Clients | 10.x.10.0/24 |
 | 20 | Servers | 10.x.20.0/24 |
 | 30 | Printers | 10.x.30.0/24 |
@@ -55,7 +58,7 @@ Nyborg og Svendborg er forbundet via OSPF og bruger RT01 som upstream router.
 ## Devices
 
 | Device | Purpose |
-|---|---|
+| --- | --- | --- |
 | RT01 | Main router, NAT, OSPF |
 | RT02 | Nyborg router |
 | RT03 | Svendborg router |
@@ -68,16 +71,16 @@ Nyborg og Svendborg er forbundet via OSPF og bruger RT01 som upstream router.
 
 ### DC01
 
-* Primary domain controller
-* DNS
-* DHCP
-* File services
+- Primary domain controller
+- DNS
+- DHCP
+- File services
 
 ### DC02
 
-* Secondary DC
-* Replication/failover
-* Backup DHCP
+- Secondary DC
+- Replication/failover
+- Backup DHCP
 
 PowerShell setup scripts findes i repository'et.
 
@@ -89,15 +92,26 @@ PowerShell setup scripts findes i repository'et.
 configs/
 ├── routers/
 ├── switches/
-powershell/
 
+powershell/
+├── dc01/
+│   ├── 01-network.ps1
+│   ├── 02-setup.ps1
+│   ├── 03-promote.ps1
+│   └── 04-post-setup.ps1
+│
+├── dc02/
+│   ├── 01-network.ps1
+│   ├── 02-domain-join.ps1
+│   ├── 03-promote.ps1
+│   └── 04-dhcp-failover.ps1
 ```
 
 ---
 
 ## Notes
 
-* Bygget primært som lab/svendeprøve projekt
-* Bruger både fysisk hardware og virtualisering
-* Mange configs er også bare notes/reference til mig selv
-* Indeholder sikkert stadig random ting jeg har glemt at rydde op i
+- Bygget primært som lab/svendeprøve projekt
+- Bruger både fysisk hardware og virtualisering
+- Mange configs er også bare notes/reference til mig selv
+- Indeholder sikkert stadig random ting jeg har glemt at rydde op i

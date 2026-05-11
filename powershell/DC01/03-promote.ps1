@@ -5,7 +5,8 @@ Install-ADDSForest `
     -DomainName $DomainName `
     -SafeModeAdministratorPassword $DSRMPassword `
     -InstallDNS `
-    -Force:$true
+    -Force:$true `
+    -NoRebootOnCompletion:$true
 
-Write-Host "Domain Controller promotion complete — restart now!" -ForegroundColor Yellow
+Write-Host "Promotion done - rebooting manually..." -ForegroundColor Yellow
 Restart-Computer

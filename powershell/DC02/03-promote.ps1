@@ -1,5 +1,3 @@
-Write-Host "=== Step 3: Installing roles and promoting DC02 ===" -ForegroundColor Cyan
-
 $DomainName = "torbenbyg.local"
 $ReplicationSource = "DC01.torbenbyg.local"
 $DSRMPassword = Read-Host "Enter DSRM password" -AsSecureString
@@ -14,4 +12,4 @@ Install-ADDSDomainController `
     -SafeModeAdministratorPassword $DSRMPassword `
     -Force:$true
 
-Write-Host "Promotion complete. The server will restart automatically after AD DS installation..." -ForegroundColor Yellow
+Write-Host "DC02 promotion complete - restarting..." -ForegroundColor Yellow
