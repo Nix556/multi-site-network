@@ -38,10 +38,10 @@ Nyborg and Svendborg are connected via OSPF and use RT01 as upstream router.
 
 | VLAN | Purpose    | Subnet        |
 | ---- | ---------- | ------------- |
-| 10   | Clients    | 10.x.10.0/24  |
-| 20   | Servers    | 10.x.20.0/24  |
-| 30   | Printers   | 10.x.30.0/24  |
-| 99   | Management | 10.x.99.0/24  |
+| 10   | Clients    | 10.10.10.0/24  |
+| 20   | Servers    | 10.10.20.0/24  |
+| 30   | Printers   | 10.10.30.0/24  |
+| 99   | Management | 10.10.99.0/24  |
 
 ---
 
