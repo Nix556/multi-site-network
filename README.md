@@ -58,7 +58,7 @@ Nyborg og Svendborg er forbundet via OSPF og bruger RT01 som upstream router.
 ## Devices
 
 | Device | Purpose |
-| --- | --- | --- |
+| --- | --- 
 | RT01 | Main router, NAT, OSPF |
 | RT02 | Nyborg router |
 | RT03 | Svendborg router |
