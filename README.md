@@ -113,5 +113,5 @@ powershell/
 
 - Bygget primært som lab/svendeprøve projekt
 - Bruger både fysisk hardware og virtualisering
-- Mange configs er også bare notes/reference til mig selv
+- Mange configs er også bare noter til mig selv
 - Indeholder sikkert stadig random ting jeg har glemt at rydde op i
