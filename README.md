@@ -1,19 +1,17 @@
-# Svendeprøve - IT Supporter
+# Svendprøve - IT Supporter
 
-Multi-site netværkslab lavet til øvelse og svendeprøve som IT-supporter.
+Multi-site network lab built for practice and final exam preparation as an IT Supporter.
 
-Projektet inkluderer blandt andet:
-
-- VLAN segmentering
+Project includes:
+- VLAN segmentation
 - OSPF routing
 - NAT
 - Active Directory
 - DHCP/DNS
-- Proxmox virtualisering
-- Fysiske Cisco routers/switches
+- Proxmox virtualization
+- Physical Cisco routers and switches
 
 Sites:
-
 - Odense
 - Nyborg
 - Svendborg
@@ -22,16 +20,15 @@ Sites:
 
 ## Overview
 
-Setup'et simulerer et mindre firma med flere lokationer forbundet over WAN links.
+The setup simulates a small company with multiple locations connected over WAN links.
 
-Odense fungerer som hovedsite med:
-
-- Internet adgang
+Odense acts as the main site with:
+- Internet access
 - Proxmox host
 - Domain Controllers
 - DNS/DHCP services
 
-Nyborg og Svendborg er forbundet via OSPF og bruger RT01 som upstream router.
+Nyborg and Svendborg are connected via OSPF and use RT01 as upstream router.
 
 ---
 
@@ -39,50 +36,50 @@ Nyborg og Svendborg er forbundet via OSPF og bruger RT01 som upstream router.
 
 ### VLANs
 
-| VLAN | Purpose | Subnet |
-| --- | --- | --- |
-| 10 | Clients | 10.x.10.0/24 |
-| 20 | Servers | 10.x.20.0/24 |
-| 30 | Printers | 10.x.30.0/24 |
-| 99 | Management | 10.x.99.0/24 |
+| VLAN | Purpose    | Subnet        |
+| ---- | ---------- | ------------- |
+| 10   | Clients    | 10.x.10.0/24  |
+| 20   | Servers    | 10.x.20.0/24  |
+| 30   | Printers   | 10.x.30.0/24  |
+| 99   | Management | 10.x.99.0/24  |
+
+---
 
 ### Routing
 
-- OSPF mellem alle sites
-- NAT på RT01
+- OSPF between all sites
+- NAT on RT01
 - Router-on-a-stick setup
-- /30 WAN links mellem routers
+- /30 WAN links between routers
 
 ---
 
 ## Devices
 
-| Device | Purpose |
-| --- | --- 
-| RT01 | Main router, NAT, OSPF |
-| RT02 | Nyborg router |
-| RT03 | Svendborg router |
-| SW01-03 | VLAN + trunk config |
-| Proxmox | Hosts DC01/DC02 |
+| Device   | Purpose                |
+| -------- | ---------------------- |
+| RT01     | Main router (NAT, OSPF) |
+| RT02     | Nyborg router         |
+| RT03     | Svendborg router      |
+| SW01-03  | VLAN + trunk config   |
+| Proxmox  | Hosts DC01/DC02       |
 
 ---
 
 ## Domain Controllers
 
 ### DC01
-
 - Primary domain controller
 - DNS
 - DHCP
 - File services
 
 ### DC02
-
 - Secondary DC
-- Replication/failover
+- Replication / failover
 - Backup DHCP
 
-PowerShell setup scripts findes i repository'et.
+PowerShell setup scripts are included in the repository.
 
 ---
 
@@ -105,13 +102,13 @@ powershell/
 │   ├── 02-domain-join.ps1
 │   ├── 03-promote.ps1
 │   └── 04-dhcp-failover.ps1
-```
+````
 
 ---
 
 ## Notes
 
-- Bygget primært som lab/svendeprøve projekt
-- Bruger både fysisk hardware og virtualisering
-- Mange configs er også bare noter til mig selv
-- Indeholder sikkert stadig random ting jeg har glemt at rydde op i
+* Built mainly as a lab and final exam preparation project
+* Uses both physical hardware and virtualization
+* Some configs are just quick notes or leftovers from testing
+* Still contains messy or unfinished parts
